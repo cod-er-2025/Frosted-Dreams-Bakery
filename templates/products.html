@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu — Frosted Dreams </title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/checkout.js"></script></head>
+<body class="page-products">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Frosted Dreams</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Menu</a></li>
+      <li><a href="checkout.html">Order</a></li>
+    </ul>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </nav>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button onclick="toggleCart()" class="cart-close">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Your cart is empty 🧺</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: ₹<span id="cartTotal">0</span></div>
+      <a href="checkout.html" class="btn-primary full-width" id="checkoutBtn" style="display:none">Proceed to Checkout →</a>
+    </div>
+  </aside>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <p class="section-label">Fresh Every Morning</p>
+    <h1>Our <em>Menu</em></h1>
+    <p>Handcrafted in small batches. Order before 11 AM for same-day delivery.</p>
+  </section>
+
+  <!-- FILTER TABS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="bread">Breads</button>
+    <button class="filter-btn" data-cat="pastry">Pastries</button>
+    <button class="filter-btn" data-cat="cake">Cakes</button>
+    <button class="filter-btn" data-cat="cookie">Cookies</button>
+    <button class="filter-btn" data-cat="drink">Drinks</button>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <section class="products-grid" id="productsGrid">
+    <!-- Breads -->
+    <div class="product-card" data-cat="bread">
+      <div class="product-img">🍞</div>
+      <div class="product-info">
+        <span class="product-badge">Bestseller</span>
+        <h3>Classic Sourdough</h3>
+        <p>48-hour fermented loaf with crispy crust and chewy interior.</p>
+        <div class="product-footer">
+          <span class="price">₹180</span>
+          <button class="add-to-cart" data-name="Classic Sourdough" data-price="180">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="bread">
+      <div class="product-img">🥖</div>
+      <div class="product-info">
+        <h3>French Baguette</h3>
+        <p>Traditional baguette — golden, crisp crust with a soft airy crumb.</p>
+        <div class="product-footer">
+          <span class="price">₹120</span>
+          <button class="add-to-cart" data-name="French Baguette" data-price="120">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="bread">
+      <div class="product-img">🫓</div>
+      <div class="product-info">
+        <h3>Multigrain Loaf</h3>
+        <p>Packed with seeds and whole grains. Nutritious and delicious.</p>
+        <div class="product-footer">
+          <span class="price">₹160</span>
+          <button class="add-to-cart" data-name="Multigrain Loaf" data-price="160">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pastries -->
+    <div class="product-card" data-cat="pastry">
+      <div class="product-img">🥐</div>
+      <div class="product-info">
+        <span class="product-badge">Chef's Pick</span>
+        <h3>Butter Croissant</h3>
+        <p>729 layers of pure French butter pastry. Flaky, golden perfection.</p>
+        <div class="product-footer">
+          <span class="price">₹90</span>
+          <button class="add-to-cart" data-name="Butter Croissant" data-price="90">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="pastry">
+      <div class="product-img">🥧</div>
+      <div class="product-info">
+        <h3>Fruit Danish</h3>
+        <p>Seasonal fruits over cream cheese on a flaky pastry base.</p>
+        <div class="product-footer">
+          <span class="price">₹110</span>
+          <button class="add-to-cart" data-name="Fruit Danish" data-price="110">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="pastry">
+      <div class="product-img">🍩</div>
+      <div class="product-info">
+        <h3>Glazed Doughnut</h3>
+        <p>Classic ring doughnut with vanilla glaze. Soft and pillowy inside.</p>
+        <div class="product-footer">
+          <span class="price">₹70</span>
+          <button class="add-to-cart" data-name="Glazed Doughnut" data-price="70">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cakes -->
+    <div class="product-card" data-cat="cake">
+      <div class="product-img">🎂</div>
+      <div class="product-info">
+        <span class="product-badge">Popular</span>
+        <h3>Chocolate Fudge Cake</h3>
+        <p>Rich Belgian chocolate layers with silky ganache frosting.</p>
+        <div class="product-footer">
+          <span class="price">₹650</span>
+          <button class="add-to-cart" data-name="Chocolate Fudge Cake" data-price="650">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="cake">
+      <div class="product-img">🍰</div>
+      <div class="product-info">
+        <h3>Strawberry Shortcake</h3>
+        <p>Light vanilla sponge with fresh strawberries and whipped cream.</p>
+        <div class="product-footer">
+          <span class="price">₹550</span>
+          <button class="add-to-cart" data-name="Strawberry Shortcake" data-price="550">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="cake">
+      <div class="product-img">🧁</div>
+      <div class="product-info">
+        <h3>Red Velvet Cupcakes</h3>
+        <p>Classic red velvet with smooth cream cheese frosting (pack of 4).</p>
+        <div class="product-footer">
+          <span class="price">₹280</span>
+          <button class="add-to-cart" data-name="Red Velvet Cupcakes" data-price="280">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookies -->
+    <div class="product-card" data-cat="cookie">
+      <div class="product-img">🍪</div>
+      <div class="product-info">
+        <span class="product-badge">Bestseller</span>
+        <h3>Choco Chip Cookies</h3>
+        <p>Crisp edges, chewy centres, loaded with chocolate chips (6 pcs).</p>
+        <div class="product-footer">
+          <span class="price">₹200</span>
+          <button class="add-to-cart" data-name="Choco Chip Cookies" data-price="200">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="cookie">
+      <div class="product-img">🫐</div>
+      <div class="product-info">
+        <h3>Blueberry Scones</h3>
+        <p>Tender, buttery scones with bursts of fresh blueberry (4 pcs).</p>
+        <div class="product-footer">
+          <span class="price">₹180</span>
+          <button class="add-to-cart" data-name="Blueberry Scones" data-price="180">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drinks -->
+    <div class="product-card" data-cat="drink">
+      <div class="product-img">☕</div>
+      <div class="product-info">
+        <h3>Artisan Drip Coffee</h3>
+        <p>Single-origin beans, brewed fresh every hour. Rich and smooth.</p>
+        <div class="product-footer">
+          <span class="price">₹80</span>
+          <button class="add-to-cart" data-name="Artisan Drip Coffee" data-price="80">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-cat="drink">
+      <div class="product-img">🍵</div>
+      <div class="product-info">
+        <h3>Chai Latte</h3>
+        <p>Spiced masala chai with steamed oat milk. Warm and comforting.</p>
+        <div class="product-footer">
+          <span class="price">₹90</span>
+          <button class="add-to-cart" data-name="Chai Latte" data-price="90">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Frosted Dreams</div>
+    <p>123 Baker Street, RS Puram, Coimbatore — 641002</p>
+    <p class="footer-copy">© 2025 Frosted Dreams. All rights reserved.</p>
+  </footer>
+
+  <script src="../static/js/main.js"></script>
+</body>
+</html>

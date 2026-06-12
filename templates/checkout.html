@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout — Frosted Dreams</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/checkout.js"></script></head>
+<body class="page-checkout">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Frosted Dreams</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Menu</a></li>
+      <li><a href="checkout.html" class="active">Order</a></li>
+    </ul>
+    <div class="cart-icon" onclick="window.location='products.html'">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </nav>
+
+  <!-- CHECKOUT WRAPPER -->
+  <main class="checkout-main">
+    <!-- STEPPER -->
+    <div class="stepper">
+      <div class="step active" id="step-dot-1">
+        <div class="step-circle">1</div>
+        <span>Cart</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-dot-2">
+        <div class="step-circle">2</div>
+        <span>Address</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-dot-3">
+        <div class="step-circle">3</div>
+        <span>Payment</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-dot-4">
+        <div class="step-circle">✓</div>
+        <span>Confirm</span>
+      </div>
+    </div>
+
+    <!-- FORM PANELS -->
+    <div class="form-panels">
+
+      <!-- STEP 1: CART REVIEW -->
+      <div class="panel active" id="panel-1">
+        <h2>Review Your Order</h2>
+        <div class="order-review" id="orderReview">
+          <p class="empty-cart">No items yet. <a href="products.html">Browse our menu →</a></p>
+        </div>
+        <div class="order-summary-total">
+          <span>Subtotal</span><span>₹<span id="reviewSubtotal">0</span></span>
+          <span>Delivery</span><span>₹40</span>
+          <span class="total-label">Total</span><span class="total-val">₹<span id="reviewTotal">40</span></span>
+        </div>
+        <button class="btn-primary next-btn" onclick="goToStep(2)" id="toStep2">Continue to Address →</button>
+      </div>
+
+      <!-- STEP 2: DELIVERY ADDRESS -->
+      <div class="panel" id="panel-2">
+        <h2>Delivery Address</h2>
+        <div class="form-grid animated-form">
+          <div class="form-group full">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="e.g. Priya Sharma" required/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" required/>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="priya@email.com" required/>
+          </div>
+          <div class="form-group full">
+            <label>Street Address</label>
+            <input type="text" id="street" placeholder="House No, Street Name" required/>
+          </div>
+          <div class="form-group">
+            <label>Area / Locality</label>
+            <input type="text" id="area" placeholder="RS Puram" required/>
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="city" value="Coimbatore" required/>
+          </div>
+          <div class="form-group">
+            <label>State</label>
+            <input type="text" id="state" value="Tamil Nadu" required/>
+          </div>
+          <div class="form-group">
+            <label>PIN Code</label>
+            <input type="text" id="pin" placeholder="641002" maxlength="6" required/>
+          </div>
+          <div class="form-group full">
+            <label>Delivery Instructions <span class="optional">(optional)</span></label>
+            <textarea id="instructions" placeholder="Leave at door, call on arrival, etc." rows="2"></textarea>
+          </div>
+          <div class="form-group full">
+            <label>Preferred Delivery Time</label>
+            <select id="deliveryTime">
+              <option>ASAP (within 2 hours)</option>
+              <option>Morning (8 AM – 12 PM)</option>
+              <option>Afternoon (12 PM – 4 PM)</option>
+              <option>Evening (4 PM – 8 PM)</option>
+            </select>
+          </div>
+        </div>
+        <div class="panel-nav">
+          <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
+          <button class="btn-primary" onclick="validateAddress()">Continue to Payment →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: PAYMENT -->
+      <div class="panel" id="panel-3">
+        <h2>Payment Method</h2>
+        <div class="payment-options">
+          <label class="payment-card selected" id="gpay-option">
+            <input type="radio" name="payment" value="gpay" checked/>
+            <div class="payment-card-inner">
+              <div class="payment-logo gpay-logo">
+                <span class="g">G</span><span class="pay">Pay</span>
+              </div>
+              <div>
+                <strong>Google Pay</strong>
+                <p>Pay instantly using UPI via Google Pay</p>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+          </label>
+          <label class="payment-card" id="upi-option">
+            <input type="radio" name="payment" value="upi"/>
+            <div class="payment-card-inner">
+              <div class="payment-logo upi-logo">UPI</div>
+              <div>
+                <strong>Other UPI Apps</strong>
+                <p>PhonePe, Paytm, BHIM, etc.</p>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+          </label>
+          <label class="payment-card" id="card-option">
+            <input type="radio" name="payment" value="card"/>
+            <div class="payment-card-inner">
+              <div class="payment-logo card-logo">💳</div>
+              <div>
+                <strong>Credit / Debit Card</strong>
+                <p>Visa, Mastercard, RuPay</p>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+          </label>
+          <label class="payment-card" id="cod-option">
+            <input type="radio" name="payment" value="cod"/>
+            <div class="payment-card-inner">
+              <div class="payment-logo cash-logo">💵</div>
+              <div>
+                <strong>Cash on Delivery</strong>
+                <p>Pay when your order arrives</p>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Google Pay Panel -->
+        <div class="gpay-panel" id="gpayPanel">
+          <div class="gpay-box">
+            <div class="gpay-header">
+              <span class="g">G</span><span class="pay">Pay</span>
+              <span class="gpay-secure">🔒 Secured by Google</span>
+            </div>
+            <p>UPI ID will receive a payment request</p>
+            <div class="form-group">
+              <label>Your UPI ID / Phone Number</label>
+              <input type="text" id="upiId" placeholder="yourname@okicici or 9876543210"/>
+            </div>
+            <div class="gpay-amount">
+              Amount: <strong>₹<span id="gpayAmount">0</span></strong>
+            </div>
+            <div class="gpay-brands">
+              <span>Works with:</span>
+              <span class="brand-badge">PhonePe</span>
+              <span class="brand-badge">Paytm</span>
+              <span class="brand-badge">BHIM</span>
+              <span class="brand-badge">GPay</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Panel -->
+        <div class="card-panel" id="cardPanel" style="display:none">
+          <div class="card-form-wrap">
+            <div class="form-group full">
+              <label>Card Number</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"/>
+            </div>
+            <div class="form-group">
+              <label>Expiry</label>
+              <input type="text" id="expiry" placeholder="MM/YY" maxlength="5"/>
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="password" id="cvv" placeholder="•••" maxlength="3"/>
+            </div>
+            <div class="form-group full">
+              <label>Name on Card</label>
+              <input type="text" id="cardName" placeholder="PRIYA SHARMA"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI Panel -->
+        <div class="upi-panel" id="upiPanel" style="display:none">
+          <div class="form-group">
+            <label>Enter your UPI ID</label>
+            <input type="text" placeholder="yourname@upi"/>
+          </div>
+        </div>
+
+        <!-- COD Panel -->
+        <div class="cod-panel" id="codPanel" style="display:none">
+          <div class="cod-note">
+            <span>💵</span>
+            <p>Keep exact change ready. Our delivery partner will collect payment at your door.</p>
+          </div>
+        </div>
+
+        <div class="order-final-total">
+          <span>Order Total</span>
+          <span>₹<span id="finalTotal">0</span></span>
+        </div>
+
+        <div class="panel-nav">
+          <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
+          <button class="btn-primary" onclick="placeOrder()">Place Order 🎉</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: CONFIRMATION -->
+      <div class="panel" id="panel-4">
+        <div class="confirmation-anim">
+          <div class="confirm-icon">🎉</div>
+          <h2>Order Placed!</h2>
+          <p class="confirm-sub">Thank you! Your order is confirmed and being prepared.</p>
+          <div class="order-id">Order ID: <strong id="orderId">LF-000000</strong></div>
+          <div class="confirm-details" id="confirmDetails"></div>
+          <div class="confirm-timeline">
+            <div class="timeline-item done">✅ Order Received</div>
+            <div class="timeline-item">🧑‍🍳 Being Prepared</div>
+            <div class="timeline-item">🚚 Out for Delivery</div>
+            <div class="timeline-item">🏠 Delivered</div>
+          </div>
+          <a href="products.html" class="btn-primary">Order Again →</a>
+        </div>
+      </div>
+
+    </div><!-- /form-panels -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Frosted Dreams</div>
+    <p class="footer-copy">© 2025 Frosted Dreams. All rights reserved.</p>
+  </footer>
+
+  <script src="../static/js/main.js"></script>
+  <script src="../static/js/checkout.js"></script>
+</body>
+</html>

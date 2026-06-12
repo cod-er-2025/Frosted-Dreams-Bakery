@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frosted Dreams</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/checkout.js"></script>
+</head>
+<body class="page-welcome">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo">Frosted Dreams</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="products.html">Menu</a></li>
+      <li><a href="checkout.html">Order</a></li>
+      </ul>
+    <div class="cart-icon" onclick="window.location='products.html'">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tagline">Handcrafted with love since 1998</p>
+      <h1 class="hero-title">
+        <span class="line">Baked</span>
+        <span class="line italic">Fresh</span>
+        <span class="line">Daily</span>
+      </h1>
+      <p class="hero-desc">From sourdough loaves to delicate pastries, every bite tells a story of tradition, craft, and the finest local ingredients.</p>
+      <div class="hero-buttons">
+        <a href="products.html" class="btn-primary">Explore Menu</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="bread-icon-wrap">
+        <div class="bread-anim">🥐</div>
+        <div class="bread-anim delay-1">🍞</div>
+        <div class="bread-anim delay-2">🎂</div>
+        <div class="bread-anim delay-3">🥧</div>
+      </div>
+    </div>
+    <div class="scroll-hint">↓ scroll</div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <section class="features">
+    <div class="feature">
+      <span class="feat-icon">🌾</span>
+      <div>
+        <h3>100% Natural</h3>
+        <p>No preservatives, no additives</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="feat-icon">🚚</span>
+      <div>
+        <h3>Same-Day Delivery</h3>
+        <p>Order before 11 AM</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="feat-icon">⭐</span>
+      <div>
+        <h3>5-Star Rated</h3>
+        <p>Loved by 10,000+ customers</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="feat-icon">🤝</span>
+      <div>
+        <h3>Local Sourced</h3>
+        <p>Farmers we trust nearby</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2>A bakery born from <em>passion</em></h2>
+      <p>Since opening our doors in 1998, Frosted Dreams has been Coimbatore's most beloved artisan bakery. We wake at 3 AM so you can wake up to the smell of warm bread.</p>
+      <p>Every croissant is laminated by hand. Every cake is frosted with care. Every loaf is shaped by bakers who have dedicated their lives to this craft.</p>
+      <a href="products.html" class="btn-primary">See Our Products</a>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">🥖<p>Artisan Breads</p></div>
+      <div class="about-card">🧁<p>Custom Cakes</p></div>
+      <div class="about-card">☕<p>Café Specials</p></div>
+      <div class="about-card">🫐<p>Fresh Pastries</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <p class="section-label">What people say</p>
+    <h2>Loved by our community</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"The sourdough is absolutely out of this world. I order every single week!"</p>
+        <div class="testi-author">— Priya M., Regular Customer</div>
+      </div>
+      <div class="testi-card">
+        <p>"Got a custom birthday cake — it was both stunning and delicious. Exceeded all expectations."</p>
+        <div class="testi-author">— Arjun K., Coimbatore</div>
+      </div>
+      <div class="testi-card">
+        <p>"Best croissants in the city by far. The delivery was fast and everything arrived warm."</p>
+        <div class="testi-author">— Meena S., Regular Customer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Frosted Dreams</div>
+    <p>123 Baker Street, RS Puram, Coimbatore — 641002</p>
+    <p>📞 +91 0 123456789 &nbsp;|&nbsp; ✉️ hello@frosteddreams.in</p>
+    <p class="footer-copy">© 2025 Frosted Dreams. All rights reserved.</p>
+  </footer>
+
+  <script src="../static/js/main.js"></script>
+</body>
+</html>
